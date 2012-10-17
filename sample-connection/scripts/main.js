@@ -1,27 +1,29 @@
 document.addEventListener("deviceready", onDeviceReady, false);
-document.addEventListener("touchstart", function() {}, false);
-
-var connectionInfo;
+//Activate :active state
+document.addEventListener("touchstart", function() {
+}, false);
 
 function onDeviceReady() {
-	connectionInfo = new ConnectionInfo();
-	connectionInfo.checkConnection();
+	var connectionInfo = new ConnectionApp();
+	connectionInfo.run();
 }
 
-function ConnectionInfo() {
-	this.init();
+function ConnectionApp() {
+	
 }
 
-ConnectionInfo.prototype = {
-	init: function() {
+ConnectionApp.prototype = {
+	run: function() {
 		var buttonCheckConnection = document.getElementById("buttonCheckConnection"),
 		that = this;
 		buttonCheckConnection.addEventListener("click",
 											   function() {
 												   that.checkConnection.apply(that, arguments)
-											   } ,
+											   },
 											   false);
+		that.checkConnection();
 	},
+	
 	checkConnection: function() {
 		var networkState = navigator.network.connection.type,
 		messageConnectionType = document.getElementById("messageConnectionType"),
