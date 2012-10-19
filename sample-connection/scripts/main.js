@@ -11,37 +11,39 @@ function onDeviceReady() {
 function ConnectionApp() {
 	
 }
-
+ 
 ConnectionApp.prototype = {
 	run: function() {
-		var buttonCheckConnection = document.getElementById("buttonCheckConnection"),
-		that = this;
+		var that = this,
+		    buttonCheckConnection = document.getElementById("buttonCheckConnection");
+		
 		buttonCheckConnection.addEventListener("click",
 											   function() {
-												   that.checkConnection.apply(that, arguments)
+												   that._checkConnection.apply(that, arguments)
 											   },
 											   false);
-		that.checkConnection();
+		that._checkConnection();
 	},
 	
-	checkConnection: function() {
-		var networkState = navigator.network.connection.type,
+	_checkConnection: function() {
+		var that = this,
+		networkState = navigator.network.connection.type,
 		messageConnectionType = document.getElementById("messageConnectionType"),
-		currentTimeDiv = document.getElementById("currentTime"),
-		that = this;
+		currentTimeDiv = document.getElementById("currentTime");
         
 		messageConnectionType.innerText = networkState;
         
-		currentTimeDiv.innerText = that.formatTime();
+		currentTimeDiv.innerText = that._formatTime();
 	},
     
-	formatTime: function() {
-		var currentDate = new Date();
-		var currentHour = currentDate.getHours();
-		var currentMinute = currentDate.getMinutes();
-		var currentSecond = currentDate.getSeconds();
-		return currentHour + ":" + fixTime(currentMinute) + ":" + fixTime(currentSecond);
-         
+	_formatTime: function() {
+		var currentDate = new Date(),
+		    currentHour = currentDate.getHours(),
+		    currentMinute = currentDate.getMinutes(),
+		    currentSecond = currentDate.getSeconds();
+		
+        return currentHour + ":" + fixTime(currentMinute) + ":" + fixTime(currentSecond);
+
 		function fixTime(value) {
 			if (value < 10) {
 				return "0" + value;
