@@ -1,7 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
-//Activate :active state
-document.addEventListener("touchstart", function() {
-}, false);
+//Activate :active state on devices
+document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
 	var connectionInfo = new ConnectionApp();
@@ -27,9 +26,9 @@ ConnectionApp.prototype = {
 	
 	_checkConnection: function() {
 		var that = this,
-		networkState = navigator.network.connection.type,
-		messageConnectionType = document.getElementById("messageConnectionType"),
-		currentTimeDiv = document.getElementById("currentTime");
+    		networkState = navigator.network.connection.type,
+    		messageConnectionType = document.getElementById("messageConnectionType"),
+    		currentTimeDiv = document.getElementById("currentTime");
         
 		messageConnectionType.innerText = networkState;
         
