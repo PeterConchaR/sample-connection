@@ -3,6 +3,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
+    navigator.splashscreen.hide();
 	var connectionInfo = new ConnectionApp();
 	connectionInfo.run();
 }
