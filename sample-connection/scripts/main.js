@@ -32,7 +32,7 @@ ConnectionApp.prototype = {
 		currentTimeDiv = document.getElementById("currentTime");
         
 		messageConnectionType.innerText = networkState;
-		var now = new Date().toTimeString();
+		var now = new Date().toLocaleTimeString().split(" ")[0];
 		
 		currentTimeDiv.innerText = now;
 	},
