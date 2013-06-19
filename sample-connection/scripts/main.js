@@ -27,7 +27,7 @@ ConnectionApp.prototype = {
 	
 	_checkConnection: function() {
 		var that = this,
-		networkState = navigator.network.connection.type,
+		networkState = navigator.connection.type,
 		messageConnectionType = document.getElementById("messageConnectionType"),
 		currentTimeDiv = document.getElementById("currentTime");
         
